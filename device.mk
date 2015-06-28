@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# Inherit from shieldtablet
+$(call inherit-product, device/nvidia/shieldtablet/shieldtablet.mk)
+
+$(call inherit-product-if-exists, vendor/nvidia/wx_na_do/wx_na_wf-vendor.mk)
+
 ## overlay
 DEVICE_PACKAGE_OVERLAYS += device/nvidia/wx_na_wf/overlay
 
@@ -21,5 +26,8 @@ DEVICE_PACKAGE_OVERLAYS += device/nvidia/wx_na_wf/overlay
 PRODUCT_PACKAGES += \
     init.none.rc
 
-# Inherit from shieldtablet
-$(call inherit-product, device/nvidia/shieldtablet/shieldtablet.mk)
+#SELinux
+BOARD_SEPOLICY_DIRS += device/nvidia/wx_na_wf/sepolicy/
+
+
+
